@@ -81,4 +81,14 @@ import java.util.Scanner;
         }
         return -1;
     }
+    public static int buscaMelhorada(double[] v, double x) {
+        int i = 0;
+        while (i < v.length && v[i] < x) {
+            i += 1;
+        }
+        if (i < v.length && v[i] == x) {
+            return i;
+        }
+        return -1;
+    }
 }
