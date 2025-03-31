@@ -3,31 +3,31 @@ package ex06_vetores;
 import java.util.Scanner;
  
  public class Exemplo06 {
-     public static Scanner input = new Scanner(System.in);
-     public static void main(String[] args) {
-         double[] notas = new double[5];
-         double media;
-         digitacaoNotas(notas);
-         impressaoNotas(notas);
-         media = calcularMedia(notas);
-         System.out.println("\nA média da turma é " + media);
-         System.out.println("\nNotas maior ou igual a média da turma\n");
-         impressaoNotasMaiorIgualValor(notas, media);
-         System.out.println("\nNotas maior ou igual a 7.0\n");
-         impressaoNotasMaiorIgualValor(notas, 7.0);
-         buscarNotasEnquantoNotaNaoNegativa(notas);
-     }
+    public static Scanner input = new Scanner(System.in);
+    public static void main(String[] args) {
+        double[] notas = new double[5];
+        double media;
+        digitacaoNotas(notas);
+        impressaoNotas(notas);
+        media = calcularMedia(notas);
+        System.out.println("\nA média da turma é " + media);
+        System.out.println("\nNotas maior ou igual a média da turma\n");
+        impressaoNotasMaiorIgualValor(notas, media);
+        System.out.println("\nNotas maior ou igual a 7.0\n");
+        impressaoNotasMaiorIgualValor(notas, 7.0);
+        buscarNotasEnquantoNotaNaoNegativa(notas);
+    }
 
-     public static void inserirOrdenado(double[] v, int pos, double x) {
+    public static void inserirOrdenado(double[] v, int pos, double x) {
         int i = pos;
-         while (i > 0 && v[i - 1] > x) {
-             v[i] = v[i - 1];
-             i -= 1;
-         }
-         v[i] = x;
-     }
+        while (i > 0 && v[i - 1] > x) {
+            v[i] = v[i - 1];
+            i -= 1;
+        }
+        v[i] = x;
+    }
 
-     public static void digitacaoNotas(double[] v) {
+    public static void digitacaoNotas(double[] v) {
         double nota;
         for (int i = 0; i < v.length; i += 1) {
             System.out.print("Digite a " + (i + 1) + "ª nota: ");
@@ -35,12 +35,14 @@ import java.util.Scanner;
             inserirOrdenado(v, i, nota);
         }
     }
+
     public static void impressaoNotas(double[] v) {
         System.out.println("\nNotas Digitadas:");
         for (int i = 0; i < v.length; i += 1) {
             System.out.println((i + 1) + "ª nota: " + v[i]);
         }
     }
+
     public static double calcularMedia(double[] v) {
         double somatorio = 0.0;
         for (int i = 0; i < v.length; i += 1) {
@@ -48,6 +50,7 @@ import java.util.Scanner;
         }
         return somatorio / v.length;
     }
+
     public static void impressaoNotasMaiorIgualValor(double[] v, double valor) {
         for (int i = 0; i < v.length; i += 1) {
             if (v[i] >= valor) {
@@ -55,6 +58,7 @@ import java.util.Scanner;
             }
         }
     }
+
     public static void buscarNotasEnquantoNotaNaoNegativa(double notas[]) {
         double nota;
         int pos;
@@ -81,6 +85,7 @@ import java.util.Scanner;
         }
         return -1;
     }
+
     public static int buscaMelhorada(double[] v, double x) {
         int i = 0;
         while (i < v.length && v[i] < x) {
@@ -90,5 +95,41 @@ import java.util.Scanner;
             return i;
         }
         return -1;
+    }
+
+    public static int buscaBinaria(double[] v, double x) {
+        int inicio = 0, fim = v.length, meio;
+        while (inicio <= fim) {
+            meio = (inicio + fim) / 2;
+            if (x == v[meio]) {
+                return meio;
+            } else if (x < v[meio]) {
+                fim = meio - 1;
+            } else {
+                inicio = meio + 1;
+            }
+        }
+        return -1;
+    }
+
+    public static boolean estaOrdenado(double[] v) {
+        boolean result = true;
+        // testando se o vetor está ordenado de forma crescente
+        for (int i = 1; i < v.length; i += 1) {
+            if (v[i] < v[i - 1]) {
+                result = false;
+                break;
+            }
+        }
+        if (result) {
+            return true;
+        }
+        // testando se o vetor está ordenado de forma decrescente
+        for (int i = 1; i < v.length; i += 1) {
+            if (v[i] > v[i - 1]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
