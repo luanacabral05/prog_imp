@@ -2,7 +2,9 @@ package ex06_vetores;
 
 import java.util.Scanner;
  
- public class Exemplo06 {
+import java.util.Scanner;
+ 
+public class Exemplo06 {
     public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         double[] notas = new double[5];
@@ -110,26 +112,5 @@ import java.util.Scanner;
             }
         }
         return -1;
-    }
-
-    public static boolean estaOrdenado(double[] v) {
-        boolean result = true;
-        // testando se o vetor está ordenado de forma crescente
-        for (int i = 1; i < v.length; i += 1) {
-            if (v[i] < v[i - 1]) {
-                result = false;
-                break;
-            }
-        }
-        if (result) {
-            return true;
-        }
-        // testando se o vetor está ordenado de forma decrescente
-        for (int i = 1; i < v.length; i += 1) {
-            if (v[i] > v[i - 1]) {
-                return false;
-            }
-        }
-        return true;
     }
 }
