@@ -2,8 +2,6 @@ package ex06_vetores;
 
 import java.util.Scanner;
  
-import java.util.Scanner;
- 
 public class Exemplo06 {
     public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
